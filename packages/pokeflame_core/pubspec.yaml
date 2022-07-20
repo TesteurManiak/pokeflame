@@ -1,7 +1,8 @@
 name: pokeflame_core
 description: A new Flutter package project.
 version: 0.0.1
-homepage:
+homepage: https://github.com/TesteurManiak/pokeflame
+repository: https://github.com/TesteurManiak/pokeflame/tree/main/packages/pokeflame_core
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
