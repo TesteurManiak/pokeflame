@@ -1,4 +1,5 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
+import 'package:pokeflame_core/src/models/poke_stats.dart';
 
 class GameDataPokemon {
   /// The id of the pokemon, correspond to its pokedex number. (e.g. 1 for
@@ -19,12 +20,11 @@ class GameDataPokemon {
   /// Type 2 of the pokemon. Is `null` if the pokemon doesn't have one.
   final GameDataType? type2;
 
-  final int baseHp;
-  final int baseAtk;
-  final int baseDef;
-  final int baseSpd;
-  final int baseSpAtk;
-  final int baseSpDef;
+  /// Base stats of the pokemon.
+  final Map<PokeStatIndex, int> stats;
+
+  /// Effort values obtained after defeating this pokemon.
+  final Map<PokeStatIndex, int> effortValues;
 
   /// HP Effort value obtained when defeating this pokemon.
   final int evHp;
@@ -92,12 +92,8 @@ class GameDataPokemon {
     this.form = 0,
     required this.type1,
     this.type2,
-    required this.baseHp,
-    required this.baseAtk,
-    required this.baseDef,
-    required this.baseSpd,
-    required this.baseSpAtk,
-    required this.baseSpDef,
+    required this.stats,
+    required this.effortValues,
     this.evHp = 0,
     this.evAtk = 0,
     this.evDef = 0,
