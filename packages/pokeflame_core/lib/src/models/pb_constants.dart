@@ -218,37 +218,6 @@ enum PBEffects {
   waterSport,
 }
 
-enum PBNatures {
-  hardy('Hardy'),
-  lonely('Lonely'),
-  brave('Brave'),
-  adamant('Adamant'),
-  naughty('Naughty'),
-  bold('Brave'),
-  docile('Docile'),
-  relaxed('Relaxed'),
-  impish('Impish'),
-  lax('Lax'),
-  timid('Timid'),
-  hasty('Hasty'),
-  serious('Serious'),
-  jolly('Jolly'),
-  naive('Naive'),
-  modest('Modest'),
-  mild('Mild'),
-  quiet('Quiet'),
-  bashful('Bashful'),
-  rash('Rash'),
-  calm('Calm'),
-  gentle('Gentle'),
-  sassy('Sassy'),
-  careful('Careful'),
-  quirky('Quirky');
-
-  final String name;
-  const PBNatures(this.name);
-}
-
 enum PBMonRoles {
   sweeper,
   physicalWall,
