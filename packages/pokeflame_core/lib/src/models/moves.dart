@@ -35,13 +35,16 @@ class GameDataMove {
 enum MoveCategory { physical, special, status }
 
 enum MoveTarget {
+  nearAlly,
   nearOther,
-  foeSide,
-  user,
-  allNearFoes,
-  other,
   randomNearFoe,
   allNearOthers,
+  allNearFoes,
+  foeSide,
+  user,
+  other,
+  bothSides,
+  userAndAllies,
 }
 
 enum MoveFlags {
