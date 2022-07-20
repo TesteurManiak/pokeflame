@@ -11,7 +11,7 @@ class GameDataMove {
   final MoveTarget target;
   final int priority;
   final Function? functionCode;
-  final String flags;
+  final List<MoveFlags> flags;
   final int? effectChance;
   final String description;
 
@@ -26,7 +26,7 @@ class GameDataMove {
     required this.target,
     this.priority = 1,
     this.functionCode,
-    required this.flags,
+    this.flags = const [],
     this.effectChance,
     required this.description,
   });
@@ -34,4 +34,24 @@ class GameDataMove {
 
 enum MoveCategory { physical, special, status }
 
-enum MoveTarget { nearOther }
+enum MoveTarget {
+  nearOther,
+  foeSide,
+  user,
+  allNearFoes,
+  other,
+  randomNearFoe,
+  allNearOthers,
+}
+
+enum MoveFlags {
+  contact,
+  canProtect,
+  canMirrorMove,
+  highCriticalHitRate,
+  sound,
+  bomb,
+  tramplesMinimize,
+  powder,
+  dance,
+}

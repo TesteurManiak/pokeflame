@@ -1,5 +1,4 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
-import 'package:pokeflame_core/src/models/poke_stats.dart';
 
 class GameDataPokemon {
   /// The id of the pokemon, correspond to its pokedex number. (e.g. 1 for
