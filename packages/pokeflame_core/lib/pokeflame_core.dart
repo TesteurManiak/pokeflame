@@ -1,11 +1,11 @@
 library pokeflame_core;
 
-export 'src/data/abilities.dart';
-export 'src/data/egg_groups.dart';
-export 'src/data/items.dart';
-export 'src/data/moves.dart';
-export 'src/data/natures.dart';
-export 'src/data/pokemon.dart';
-export 'src/data/types.dart';
+export 'src/models/abilities.dart';
+export 'src/models/egg_groups.dart';
 export 'src/models/evolution_node.dart';
+export 'src/models/items.dart';
+export 'src/models/moves.dart';
+export 'src/models/natures.dart';
 export 'src/models/pb_evolution.dart';
+export 'src/models/pokemon.dart';
+export 'src/models/types.dart';
