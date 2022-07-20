@@ -7,5 +7,4 @@ export 'src/data/moves.dart';
 export 'src/data/pokemon.dart';
 export 'src/data/types.dart';
 export 'src/models/evolution_node.dart';
-export 'src/models/pb_constants.dart';
 export 'src/models/pb_evolution.dart';

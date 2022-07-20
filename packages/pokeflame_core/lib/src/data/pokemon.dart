@@ -126,42 +126,4 @@ class GameDataPokemon {
     required this.battlerAltitude,
     this.evolutions = const [],
   }) : assert(type1 != type2, 'type1 and type2 must be different');
-
-  static const bulbasaur = GameDataPokemon(
-    id: 1,
-    name: 'Bulbasaur',
-    type1: GameDataType.grass,
-    // type2: GameDataType.poison,
-    baseHp: 45,
-    baseAtk: 49,
-    baseDef: 49,
-    baseSpd: 45,
-    baseSpAtk: 65,
-    baseSpDef: 65,
-    evSpAtk: 1,
-    abilities: [GameDataAbility.overgrow, GameDataAbility.chlorophyll],
-    growthRate: "MediumSlow",
-    genderRatio: "FemEighth",
-    baseExp: 64,
-    catchRate: 45,
-    happiness: 70,
-    eggSteps: 5355,
-    eggMoves: [],
-    moveset: {},
-    tmList: [],
-    color: "Green",
-    habitat: "Grassland",
-    eggGroups: [GameDataEggGroup.monster, GameDataEggGroup.grass],
-    height: .7,
-    weight: 6.9,
-    kind: "Seed",
-    description:
-        "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger.",
-    battlerPlayerY: 28,
-    battlerEnemyY: 25,
-    battlerAltitude: 0,
-    // evolutions: [
-    //   EvolutionNode(pokemon: pokemon, type: PBEvolution.level, value: 16)
-    // ],
-  );
 }

@@ -17,11 +17,4 @@ class GameDataItem {
     required this.pocket,
     required this.price,
   });
-
-  static const soothebell = GameDataItem(
-    id: 79,
-    name: 'Soothe Bell',
-    pocket: 1,
-    price: 100,
-  );
 }
