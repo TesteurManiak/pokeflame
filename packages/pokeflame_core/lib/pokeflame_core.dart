@@ -1,3 +1,4 @@
 library pokeflame_core;
 
-export 'src/entities/species.dart';
+export 'src/models/pb_abilities.dart';
+export 'src/models/pb_constants.dart';
