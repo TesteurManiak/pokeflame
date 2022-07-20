@@ -4,6 +4,7 @@ export 'src/data/abilities.dart';
 export 'src/data/egg_groups.dart';
 export 'src/data/items.dart';
 export 'src/data/moves.dart';
+export 'src/data/natures.dart';
 export 'src/data/pokemon.dart';
 export 'src/data/types.dart';
 export 'src/models/evolution_node.dart';
