@@ -1,5 +1,7 @@
 enum GameDataEggGroup {
-  amorphous('Amorphous');
+  amorphous('Amorphous'),
+  grass('Grass'),
+  monster('Monster');
 
   final String name;
   const GameDataEggGroup(this.name);

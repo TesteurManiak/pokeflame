@@ -1,5 +1,4 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
-import 'package:pokeflame_core/src/data/egg_groups.dart';
 
 class GameDataPokemon {
   /// The id of the pokemon, correspond to its pokedex number. (e.g. 1 for
@@ -15,10 +14,10 @@ class GameDataPokemon {
   final int form;
 
   /// Type 1 of the pokemon.
-  final int type1;
+  final GameDataType type1;
 
   /// Type 2 of the pokemon. Is `null` if the pokemon doesn't have a type 2.
-  final int? type2;
+  final GameDataType? type2;
 
   final int baseHp;
   final int baseAtk;
@@ -53,6 +52,8 @@ class GameDataPokemon {
   final int baseExp;
   final int catchRate;
   final int happiness;
+
+  /// Number of steps required to hatch the pokemon.
   final int eggSteps;
 
   /// Moves that can be learned through breeding.
@@ -64,11 +65,25 @@ class GameDataPokemon {
   /// Moves learned by TM/HM.
   final List<GameDataMove> tmList;
 
-  final GameDataColor color;
-  final GameDataHabitat habitat;
+  final String color;
+  final String habitat;
   final List<GameDataEggGroup> eggGroups;
+
+  /// The pokemon's height in meters.
   final double height;
+
+  /// The pokemon's weight in kilograms.
   final double weight;
+
+  final String kind;
+
+  /// Description of the pokemon displayed in the pokedex.
+  final String description;
+
+  final int battlerPlayerY;
+  final int battlerEnemyY;
+  final int battlerAltitude;
+  final List<EvolutionNode> evolutions;
 
   const GameDataPokemon({
     required this.id,
@@ -104,5 +119,49 @@ class GameDataPokemon {
     required this.eggGroups,
     required this.height,
     required this.weight,
+    required this.kind,
+    required this.description,
+    required this.battlerPlayerY,
+    required this.battlerEnemyY,
+    required this.battlerAltitude,
+    this.evolutions = const [],
   }) : assert(type1 != type2, 'type1 and type2 must be different');
+
+  static const bulbasaur = GameDataPokemon(
+    id: 1,
+    name: 'Bulbasaur',
+    type1: GameDataType.grass,
+    // type2: GameDataType.poison,
+    baseHp: 45,
+    baseAtk: 49,
+    baseDef: 49,
+    baseSpd: 45,
+    baseSpAtk: 65,
+    baseSpDef: 65,
+    evSpAtk: 1,
+    abilities: [GameDataAbility.overgrow, GameDataAbility.chlorophyll],
+    growthRate: "MediumSlow",
+    genderRatio: "FemEighth",
+    baseExp: 64,
+    catchRate: 45,
+    happiness: 70,
+    eggSteps: 5355,
+    eggMoves: [],
+    moveset: {},
+    tmList: [],
+    color: "Green",
+    habitat: "Grassland",
+    eggGroups: [GameDataEggGroup.monster, GameDataEggGroup.grass],
+    height: .7,
+    weight: 6.9,
+    kind: "Seed",
+    description:
+        "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger.",
+    battlerPlayerY: 28,
+    battlerEnemyY: 25,
+    battlerAltitude: 0,
+    // evolutions: [
+    //   EvolutionNode(pokemon: pokemon, type: PBEvolution.level, value: 16)
+    // ],
+  );
 }

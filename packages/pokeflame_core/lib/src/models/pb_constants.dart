@@ -1,3 +1,28 @@
+class PBTypes {
+  final int id;
+
+  const PBTypes(this.id);
+
+  static const normal = PBTypes(1);
+  static const fire = PBTypes(2);
+  static const water = PBTypes(3);
+  static const electric = PBTypes(4);
+  static const grass = PBTypes(5);
+  static const ice = PBTypes(6);
+  static const fighting = PBTypes(7);
+  static const poison = PBTypes(8);
+  static const ground = PBTypes(9);
+  static const flying = PBTypes(10);
+  static const psychic = PBTypes(11);
+  static const bug = PBTypes(12);
+  static const rock = PBTypes(13);
+  static const ghost = PBTypes(14);
+  static const dragon = PBTypes(15);
+  static const dark = PBTypes(16);
+  static const steel = PBTypes(17);
+  static const fairy = PBTypes(18);
+}
+
 enum PBStatuses { sleep, poison, burn, paralysis, frozen }
 
 extension PBStatusesId on PBStatuses {
