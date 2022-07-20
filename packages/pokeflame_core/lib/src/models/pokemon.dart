@@ -6,12 +6,10 @@ class GameDataPokemon {
   /// Bulbasaur)
   final int id;
 
-  /// The id of the pokemon's alternative form. Default to 0.
-  final int idBis;
-
   /// The name of the pokemon.
   final String name;
 
+  /// The index of this form of that Pokémon
   final int form;
 
   /// Type 1 of the pokemon.
@@ -87,7 +85,6 @@ class GameDataPokemon {
 
   const GameDataPokemon({
     required this.id,
-    this.idBis = 0,
     required this.name,
     this.form = 0,
     required this.type1,
