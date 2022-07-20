@@ -1,0 +1,3 @@
+class Species {
+  const Species();
+}
