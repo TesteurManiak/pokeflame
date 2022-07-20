@@ -16,7 +16,7 @@ class GameDataPokemon {
   /// Type 1 of the pokemon.
   final GameDataType type1;
 
-  /// Type 2 of the pokemon. Is `null` if the pokemon doesn't have a type 2.
+  /// Type 2 of the pokemon. Is `null` if the pokemon doesn't have one.
   final GameDataType? type2;
 
   final int baseHp;
