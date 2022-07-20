@@ -3,17 +3,35 @@ import 'package:pokeflame_core/pokeflame_core.dart';
 class GameDataMove {
   final int id;
   final String name;
-  final String description;
   final GameDataType type;
-  final int? accuracy;
+  final MoveCategory category;
   final int? power;
+  final int? accuracy;
+  final int totalPP;
+  final MoveTarget target;
+  final int priority;
+  final Function? functionCode;
+  final String flags;
+  final int? effectChance;
+  final String description;
 
   const GameDataMove({
     required this.id,
     required this.name,
-    required this.description,
     required this.type,
-    this.accuracy,
+    required this.category,
     this.power,
+    this.accuracy,
+    required this.totalPP,
+    required this.target,
+    this.priority = 1,
+    this.functionCode,
+    required this.flags,
+    this.effectChance,
+    required this.description,
   });
 }
+
+enum MoveCategory { physical, special, status }
+
+enum MoveTarget { nearOther }

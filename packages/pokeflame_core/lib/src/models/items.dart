@@ -1,3 +1,5 @@
+import 'package:pokeflame_core/pokeflame_core.dart';
+
 class GameDataItem {
   /// The id of the item.
   final int id;
@@ -18,7 +20,7 @@ class GameDataItem {
   final TargetUse? battleUse;
   final bool? consumable;
   final List<String> flags;
-  final String? move;
+  final GameDataMove? move;
   final String description;
 
   const GameDataItem({
