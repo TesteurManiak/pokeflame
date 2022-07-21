@@ -72,6 +72,8 @@ class GameDataPokemon {
 
   final String kind;
 
+  final List<String> flags;
+
   /// Description of the pokemon displayed in the pokedex.
   final String description;
 
@@ -110,12 +112,26 @@ class GameDataPokemon {
     required this.height,
     required this.weight,
     required this.kind,
+    this.flags = const [],
     required this.description,
     required this.battlerPlayerY,
     required this.battlerEnemyY,
     required this.battlerAltitude,
     this.evolutions = const [],
   }) : assert(type1 != type2, 'type1 and type2 must be different');
+
+  int get defaultForm {
+    for (final flag in flags) {
+      if (flag.contains(
+        RegExp(r'/^DefaultForm_(\d+)$/i', caseSensitive: false),
+      )) {
+        return 1;
+      }
+    }
+    return -1;
+  }
+
+  int get baseForm => defaultForm >= 0 ? defaultForm : form;
 
   GameDataPokemon copyWith({
     String? name,

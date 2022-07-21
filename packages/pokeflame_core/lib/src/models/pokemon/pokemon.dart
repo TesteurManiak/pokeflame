@@ -3,7 +3,7 @@ import 'package:pokeflame_core/pokeflame_core.dart';
 /// Instance of this class represents a single pokemon.
 class Pokemon {
   /// The pokemon species.
-  final GameDataPokemon species;
+  final GameDataPokemon speciesData;
 
   /// If defined, this Pokemon's form will be this value even if a MultipleForms
   /// handler tries to say otherwise.
@@ -21,14 +21,14 @@ class Pokemon {
   final int stepsToHatch;
 
   /// Return the current HP.
-  final int hp;
+  int _hp;
 
   /// This Pokemon's current status.
-  final GameDataStatus? status;
+  GameDataStatus? status;
 
   /// - For the sleep status, this is the number of rounds before waking up.
   /// - For the toxic status, 0 is regular poison, 1 is badly poisoned.
-  final int? statusCount;
+  int? statusCount;
 
   /// This Pokemon's shinyness.
   final bool shiny;
@@ -103,7 +103,7 @@ class Pokemon {
 
   /// Used by Galarian Yamask to remember it took sufficient damage to from a
   /// battle and can evolve.
-  final bool readyToEvolve;
+  bool readyToEvolve;
 
   /// Whether this Pokemon can be deposited in storage/Day Care.
   final bool cannotStore;
@@ -116,13 +116,15 @@ class Pokemon {
 
   final GameDataNature nature;
 
+  int form;
+
   Pokemon({
-    required this.species,
+    required this.speciesData,
     this.forcedForm,
     this.timeFormSet,
     this.exp = 0,
     this.stepsToHatch = 0,
-    required this.hp,
+    required int hp,
     this.status,
     this.statusCount,
     this.shiny = false,
@@ -162,7 +164,10 @@ class Pokemon {
     this.cannotRelease = false,
     this.cannotTrade = false,
     required this.nature,
-  })  : assert(moves.isNotEmpty),
+    int? form,
+  })  : _hp = hp,
+        form = form ?? speciesData.baseForm,
+        assert(moves.isNotEmpty),
         assert(cool > 0),
         assert(beauty > 0),
         assert(cute > 0),
@@ -175,7 +180,7 @@ class Pokemon {
   int get totalHp {
     final iv = individualValues[PokeStatIndex.hp] ?? 0;
     final ev = effortValues[PokeStatIndex.hp] ?? 0;
-    final base = species.stats[PokeStatIndex.hp]!;
+    final base = speciesData.stats[PokeStatIndex.hp]!;
 
     return (.01 * (2 * base + iv + (.25 * ev).floor()) * level).floor() +
         level +
@@ -184,31 +189,31 @@ class Pokemon {
 
   /// Return the attack calculated stat.
   int get attack => _calculateStat(
-        base: species.stats[PokeStatIndex.attack]!,
+        base: speciesData.stats[PokeStatIndex.attack]!,
         stat: PokeStatIndex.attack,
       );
 
   /// Return the defense calculated stat.
   int get defense => _calculateStat(
-        base: species.stats[PokeStatIndex.defense]!,
+        base: speciesData.stats[PokeStatIndex.defense]!,
         stat: PokeStatIndex.defense,
       );
 
   /// Return the speed calculated stat.
   int get speed => _calculateStat(
-        base: species.stats[PokeStatIndex.speed]!,
+        base: speciesData.stats[PokeStatIndex.speed]!,
         stat: PokeStatIndex.speed,
       );
 
   /// Return the special attack calculated stat.
   int get specialAttack => _calculateStat(
-        base: species.stats[PokeStatIndex.spAttack]!,
+        base: speciesData.stats[PokeStatIndex.spAttack]!,
         stat: PokeStatIndex.spAttack,
       );
 
   /// Return the special defense calculated stat.
   int get specialDefense => _calculateStat(
-        base: species.stats[PokeStatIndex.spDefense]!,
+        base: speciesData.stats[PokeStatIndex.spDefense]!,
         stat: PokeStatIndex.spDefense,
       );
 
@@ -242,10 +247,10 @@ class Pokemon {
   bool get isEgg => stepsToHatch > 0;
 
   /// Return this Pokemon's growth rate.
-  GameDataGrowthRate get growthRate => species.growthRate;
+  GameDataGrowthRate get growthRate => speciesData.growthRate;
 
   /// Return this Pokemon's base Expedition value.
-  int get baseExp => species.baseExp;
+  int get baseExp => speciesData.baseExp;
 
   /// Return a number between 0 and 1 indicating how much of the current level's
   /// Exp this Pokemon has.
@@ -257,6 +262,23 @@ class Pokemon {
     final startExp = growthRate.minimumExpForLevel(lvl);
     final endExp = growthRate.minimumExpForLevel(lvl + 1);
     return (exp - startExp) / (endExp - startExp);
+  }
+
+  /// Return the current HP.
+  int get hp => _hp;
+
+  set hp(int value) {
+    _hp = value.clamp(0, totalHp);
+    if (hp == 0) {
+      healStatus();
+      readyToEvolve = false;
+    }
+  }
+
+  void healStatus() {
+    if (isEgg) return;
+    status = null;
+    statusCount = 0;
   }
 }
 
