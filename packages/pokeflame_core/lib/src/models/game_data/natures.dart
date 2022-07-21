@@ -2,6 +2,7 @@ import 'package:pokeflame_core/pokeflame_core.dart';
 
 class GameDataNature {
   final int id;
+  final String name;
   final double hpModifier;
   final double atkModifier;
   final double defModifier;
@@ -13,6 +14,7 @@ class GameDataNature {
 
   const GameDataNature({
     required this.id,
+    required this.name,
     this.hpModifier = 1.0,
     this.atkModifier = 1.0,
     this.defModifier = 1.0,
@@ -49,6 +51,7 @@ class GameDataNature {
   }
 
   GameDataNature copyWith({
+    String? name,
     double? hpModifier,
     double? atkModifier,
     double? defModifier,
@@ -58,6 +61,7 @@ class GameDataNature {
   }) {
     return GameDataNature(
       id: id,
+      name: name ?? this.name,
       hpModifier: hpModifier ?? this.hpModifier,
       atkModifier: atkModifier ?? this.atkModifier,
       defModifier: defModifier ?? this.defModifier,
