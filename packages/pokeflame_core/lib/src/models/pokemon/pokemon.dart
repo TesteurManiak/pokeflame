@@ -13,8 +13,12 @@ class Pokemon {
   /// set.
   final int? timeFormSet;
 
-  /// Return the current experience point.
-  final int exp;
+  /// The current experience point.
+  int exp;
+
+  /// The number of steps until this Pokémon hatches, 0 if this Pokémon is not
+  /// an egg.
+  final int stepsToHatch;
 
   /// Return the current HP.
   final int hp;
@@ -112,11 +116,12 @@ class Pokemon {
 
   final GameDataNature nature;
 
-  const Pokemon({
+  Pokemon({
     required this.species,
     this.forcedForm,
     this.timeFormSet,
     this.exp = 0,
+    this.stepsToHatch = 0,
     required this.hp,
     this.status,
     this.statusCount,
@@ -157,7 +162,7 @@ class Pokemon {
     this.cannotRelease = false,
     this.cannotTrade = false,
     required this.nature,
-  })  : assert(moves.length > 0),
+  })  : assert(moves.isNotEmpty),
         assert(cool > 0),
         assert(beauty > 0),
         assert(cute > 0),
@@ -220,9 +225,38 @@ class Pokemon {
         .floor();
   }
 
-  int get level {
-    // TODO: calculate level from growth rate and amount of exp.
-    return obtainLevel ?? 1;
+  /// Return this Pokemon's level.
+  int get level => growthRate.levelFromExp(exp);
+
+  /// Sets this Pokemon's level.
+  ///
+  /// The given level must be between 1 and maximum level (defined in
+  /// [GameDataGrowthRate]).
+  set level(int value) {
+    if (value < 1 || value > growthRate.maxLevel) {
+      throw ArgumentError('The level number $value is invalid.');
+    }
+    exp = growthRate.minimumExpForLevel(value);
+  }
+
+  bool get isEgg => stepsToHatch > 0;
+
+  /// Return this Pokemon's growth rate.
+  GameDataGrowthRate get growthRate => species.growthRate;
+
+  /// Return this Pokemon's base Expedition value.
+  int get baseExp => species.baseExp;
+
+  /// Return a number between 0 and 1 indicating how much of the current level's
+  /// Exp this Pokemon has.
+  double get expFraction {
+    final lvl = level;
+    if (lvl >= growthRate.maxLevel) {
+      return 0.0;
+    }
+    final startExp = growthRate.minimumExpForLevel(lvl);
+    final endExp = growthRate.minimumExpForLevel(lvl + 1);
+    return (exp - startExp) / (endExp - startExp);
   }
 }
 

@@ -42,7 +42,7 @@ class GameDataPokemon {
   /// The abilities of the pokemon.
   final List<GameDataAbility> abilities;
 
-  final String growthRate;
+  final GameDataGrowthRate growthRate;
   final String genderRatio;
   final int baseExp;
   final int catchRate;
@@ -131,7 +131,7 @@ class GameDataPokemon {
     int? evSpAtk,
     int? evSpDef,
     List<GameDataAbility>? abilities,
-    String? growthRate,
+    GameDataGrowthRate? growthRate,
     String? genderRatio,
     int? baseExp,
     int? catchRate,
