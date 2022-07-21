@@ -29,7 +29,9 @@ class Pokemon {
   /// This Pokemon's shinyness.
   final bool shiny;
 
-  Pokemon({
+  final List<PokemonMove> moves;
+
+  const Pokemon({
     required this.species,
     this.forcedForm,
     this.timeFormSet,
@@ -38,5 +40,6 @@ class Pokemon {
     this.status,
     this.statusCount,
     this.shiny = false,
-  });
+    required this.moves,
+  }) : assert(moves.length > 0);
 }

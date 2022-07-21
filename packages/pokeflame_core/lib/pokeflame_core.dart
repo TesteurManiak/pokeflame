@@ -12,4 +12,5 @@ export 'src/models/game_data/status.dart';
 export 'src/models/game_data/types.dart';
 export 'src/models/pb_evolution.dart';
 export 'src/models/poke_stats.dart';
-export 'src/scripts/pokemon.dart';
+export 'src/models/pokemon/move.dart';
+export 'src/models/pokemon/pokemon.dart';

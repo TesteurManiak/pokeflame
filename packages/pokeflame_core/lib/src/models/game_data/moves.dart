@@ -11,7 +11,7 @@ class GameDataMove extends GameData<GameDataMove> {
   final int priority;
   final Function? functionCode;
   final List<MoveFlags> flags;
-  final int? effectChance;
+  final int effectChance;
   final String description;
 
   const GameDataMove({
@@ -23,12 +23,29 @@ class GameDataMove extends GameData<GameDataMove> {
     this.accuracy,
     required this.totalPP,
     required this.target,
-    this.priority = 1,
+    this.priority = 0,
     this.functionCode,
     this.flags = const [],
-    this.effectChance,
+    this.effectChance = 0,
     required this.description,
   });
+
+  bool hasFlag(MoveFlags flag) => flags.contains(flag);
+
+  bool get isPhysical {
+    if (power == null || power == 0) return false;
+    return category == MoveCategory.physical;
+  }
+
+  bool get isSpecial {
+    if (power == null || power == 0) return false;
+    return category == MoveCategory.special;
+  }
+
+  bool get isHiddenMove {
+    // TODO: Implement this.
+    return false;
+  }
 
   @override
   GameDataMove copyWith({
