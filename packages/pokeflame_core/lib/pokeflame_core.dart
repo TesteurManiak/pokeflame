@@ -4,6 +4,7 @@ export 'src/models/game_data/abilities.dart';
 export 'src/models/game_data/constants.dart';
 export 'src/models/game_data/egg_groups.dart';
 export 'src/models/game_data/game_data.dart';
+export 'src/models/game_data/growth_rate.dart';
 export 'src/models/game_data/items.dart';
 export 'src/models/game_data/moves.dart';
 export 'src/models/game_data/natures.dart';
