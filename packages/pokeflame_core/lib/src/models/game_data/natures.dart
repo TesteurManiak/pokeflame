@@ -16,7 +16,32 @@ class GameDataNature extends GameData<GameDataNature> {
     this.spdModifier = 1.0,
     this.spAtkModifier = 1.0,
     this.spDefModifier = 1.0,
-  });
+  })  : assert(hpModifier >= 0.0),
+        assert(atkModifier >= 0.0),
+        assert(defModifier >= 0.0),
+        assert(spdModifier >= 0.0),
+        assert(spAtkModifier >= 0.0),
+        assert(spDefModifier >= 0.0);
+
+  double operator [](PokeStatIndex i) {
+    switch (i) {
+      case PokeStatIndex.hp:
+        return hpModifier;
+      case PokeStatIndex.attack:
+        return atkModifier;
+      case PokeStatIndex.defense:
+        return defModifier;
+      case PokeStatIndex.speed:
+        return spdModifier;
+      case PokeStatIndex.spAttack:
+        return spAtkModifier;
+      case PokeStatIndex.spDefense:
+        return spDefModifier;
+      case PokeStatIndex.accuracy:
+      case PokeStatIndex.evasion:
+        return 1.0;
+    }
+  }
 
   @override
   GameData<GameDataNature> copyWith({
