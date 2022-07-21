@@ -1,3 +1,5 @@
+import 'package:pokeflame_core/pokeflame_core.dart';
+
 /// Instance of this class represents a single pokemon.
 class Pokemon {
   /// The pokemon species.
@@ -17,11 +19,24 @@ class Pokemon {
   /// Return the current HP.
   final int hp;
 
+  /// This Pokemon's current status.
+  final GameDataStatus? status;
+
+  /// - For the sleep status, this is the number of rounds before waking up.
+  /// - For the toxic status, 0 is regular poison, 1 is badly poisoned.
+  final int? statusCount;
+
+  /// This Pokemon's shinyness.
+  final bool shiny;
+
   Pokemon({
     required this.species,
     this.forcedForm,
     this.timeFormSet,
     this.exp = 0,
     required this.hp,
+    this.status,
+    this.statusCount,
+    this.shiny = false,
   });
 }
