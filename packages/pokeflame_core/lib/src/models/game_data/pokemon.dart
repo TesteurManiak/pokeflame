@@ -1,10 +1,6 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class GameDataPokemon {
-  /// The id of the pokemon, correspond to its pokedex number. (e.g. 1 for
-  /// Bulbasaur)
-  final int id;
-
+class GameDataPokemon extends GameData<GameDataPokemon> {
   /// The name of the pokemon.
   final String name;
 
@@ -83,7 +79,7 @@ class GameDataPokemon {
   final List<EvolutionNode> evolutions;
 
   const GameDataPokemon({
-    required this.id,
+    required super.id,
     required this.name,
     this.form = 0,
     required this.type1,
@@ -118,4 +114,90 @@ class GameDataPokemon {
     required this.battlerAltitude,
     this.evolutions = const [],
   }) : assert(type1 != type2, 'type1 and type2 must be different');
+
+  @override
+  GameData<GameDataPokemon> copyWith({
+    String? name,
+    int? form,
+    GameDataType? type1,
+    GameDataType? type2,
+    Map<PokeStatIndex, int>? stats,
+    Map<PokeStatIndex, int>? effortValues,
+    int? evHp,
+    int? evAtk,
+    int? evDef,
+    int? evSpd,
+    int? evSpAtk,
+    int? evSpDef,
+    List<GameDataAbility>? abilities,
+    String? growthRate,
+    String? genderRatio,
+    int? baseExp,
+    int? catchRate,
+    int? happiness,
+    int? eggSteps,
+    List<GameDataMove>? eggMoves,
+    Map<int, GameDataMove>? moveset,
+    List<GameDataMove>? tmList,
+    String? color,
+    String? habitat,
+    List<GameDataEggGroup>? eggGroups,
+    double? height,
+    double? weight,
+    String? kind,
+    String? description,
+    int? battlerPlayerY,
+    int? battlerEnemyY,
+    int? battlerAltitude,
+    List<EvolutionNode>? evolutions,
+  }) {
+    return GameDataPokemon(
+      id: id,
+      name: name ?? this.name,
+      form: form ?? this.form,
+      type1: type1 ?? this.type1,
+      type2: type2 ?? this.type2,
+      stats: stats ?? this.stats,
+      effortValues: effortValues ?? this.effortValues,
+      evHp: evHp ?? this.evHp,
+      evAtk: evAtk ?? this.evAtk,
+      evDef: evDef ?? this.evDef,
+      evSpd: evSpd ?? this.evSpd,
+      evSpAtk: evSpAtk ?? this.evSpAtk,
+      evSpDef: evSpDef ?? this.evSpDef,
+      abilities: abilities ?? this.abilities,
+      growthRate: growthRate ?? this.growthRate,
+      genderRatio: genderRatio ?? this.genderRatio,
+      baseExp: baseExp ?? this.baseExp,
+      catchRate: catchRate ?? this.catchRate,
+      happiness: happiness ?? this.happiness,
+      eggSteps: eggSteps ?? this.eggSteps,
+      eggMoves: eggMoves ?? this.eggMoves,
+      moveset: moveset ?? this.moveset,
+      tmList: tmList ?? this.tmList,
+      color: color ?? this.color,
+      habitat: habitat ?? this.habitat,
+      eggGroups: eggGroups ?? this.eggGroups,
+      height: height ?? this.height,
+      weight: weight ?? this.weight,
+      kind: kind ?? this.kind,
+      description: description ?? this.description,
+      battlerPlayerY: battlerPlayerY ?? this.battlerPlayerY,
+      battlerEnemyY: battlerEnemyY ?? this.battlerEnemyY,
+      battlerAltitude: battlerAltitude ?? this.battlerAltitude,
+      evolutions: evolutions ?? this.evolutions,
+    );
+  }
+}
+
+class EvolutionNode {
+  final GameDataPokemon pokemon;
+  final PBEvolution type;
+  final int value;
+
+  const EvolutionNode({
+    required this.pokemon,
+    required this.type,
+    required this.value,
+  });
 }

@@ -1,7 +1,6 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class GameDataMove {
-  final int id;
+class GameDataMove extends GameData<GameDataMove> {
   final String name;
   final GameDataType type;
   final MoveCategory category;
@@ -16,7 +15,7 @@ class GameDataMove {
   final String description;
 
   const GameDataMove({
-    required this.id,
+    required super.id,
     required this.name,
     required this.type,
     required this.category,
@@ -30,6 +29,38 @@ class GameDataMove {
     this.effectChance,
     required this.description,
   });
+
+  @override
+  GameDataMove copyWith({
+    String? name,
+    GameDataType? type,
+    MoveCategory? category,
+    int? power,
+    int? accuracy,
+    int? totalPP,
+    MoveTarget? target,
+    int? priority,
+    Function? functionCode,
+    List<MoveFlags>? flags,
+    int? effectChance,
+    String? description,
+  }) {
+    return GameDataMove(
+      id: id,
+      name: name ?? this.name,
+      type: type ?? this.type,
+      category: category ?? this.category,
+      power: power ?? this.power,
+      accuracy: accuracy ?? this.accuracy,
+      totalPP: totalPP ?? this.totalPP,
+      target: target ?? this.target,
+      priority: priority ?? this.priority,
+      functionCode: functionCode ?? this.functionCode,
+      flags: flags ?? this.flags,
+      effectChance: effectChance ?? this.effectChance,
+      description: description ?? this.description,
+    );
+  }
 }
 
 enum MoveCategory { physical, special, status }
