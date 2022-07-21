@@ -168,11 +168,10 @@ class Pokemon {
 
   /// Return the HP calculated stat.
   int get totalHp {
-    const level = 1; // TODO: remove
-
     final iv = individualValues[PokeStatIndex.hp] ?? 0;
     final ev = effortValues[PokeStatIndex.hp] ?? 0;
     final base = species.stats[PokeStatIndex.hp]!;
+
     return (.01 * (2 * base + iv + (.25 * ev).floor()) * level).floor() +
         level +
         10;
@@ -212,12 +211,15 @@ class Pokemon {
     required int base,
     required PokeStatIndex stat,
   }) {
-    const level = 1; // TODO: remove
-
     final iv = individualValues[stat] ?? 0;
     final ev = effortValues[stat] ?? 0;
     final natureModifier = nature[stat];
     return ((.01 * (2 * base + iv)).floor() * natureModifier).floor();
+  }
+
+  int get level {
+    // TODO: calculate level from growth rate and amount of exp.
+    return obtainLevel ?? 1;
   }
 }
 
