@@ -230,4 +230,6 @@ class GrowthRateKit {
         expFormula: (level) => math.pow(level, 4) * 3 ~/ 500,
         constants: constants,
       );
+
+  List<GameDataGrowthRate> get props => [medium, erratic];
 }
