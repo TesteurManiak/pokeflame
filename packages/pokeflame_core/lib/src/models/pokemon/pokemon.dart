@@ -23,8 +23,7 @@ class Pokemon {
   /// Return the current HP.
   int _hp;
 
-  /// This Pokemon's current status.
-  GameDataStatus? status;
+  GameDataStatus? _status;
 
   /// - For the sleep status, this is the number of rounds before waking up.
   /// - For the toxic status, 0 is regular poison, 1 is badly poisoned.
@@ -125,7 +124,7 @@ class Pokemon {
     this.exp = 0,
     this.stepsToHatch = 0,
     required int hp,
-    this.status,
+    GameDataStatus? status,
     this.statusCount,
     this.shiny = false,
     required this.moves,
@@ -167,6 +166,7 @@ class Pokemon {
     int? form,
   })  : _hp = hp,
         form = form ?? speciesData.baseForm,
+        _status = status,
         assert(moves.isNotEmpty),
         assert(cool > 0),
         assert(beauty > 0),
@@ -267,6 +267,7 @@ class Pokemon {
   /// Return the current HP.
   int get hp => _hp;
 
+  /// Sets the Pokemon's health.
   set hp(int value) {
     _hp = value.clamp(0, totalHp);
     if (hp == 0) {
@@ -275,9 +276,25 @@ class Pokemon {
     }
   }
 
+  /// This Pokemon's current status.
+  GameDataStatus? get status => _status;
+
+  /// Sets this Pokemon's status.
+  set status(GameDataStatus? value) {
+    if (!isAble()) return;
+    final newStatus = value;
+    if (newStatus == null) {
+      throw ArgumentError('Attempted to set ${value?.name} as Pokemon status.');
+    }
+    _status = newStatus;
+  }
+
+  /// Return whether the Pokemon is not fainted and not an egg.
+  bool isAble() => !isEgg && hp > 0;
+
   void healStatus() {
     if (isEgg) return;
-    status = null;
+    _status = null;
     statusCount = 0;
   }
 }
