@@ -1,6 +1,6 @@
-import 'package:pokeflame_core/pokeflame_core.dart';
+class GameDataType {
+  final int id;
 
-class GameDataType extends GameData<GameDataType> {
   /// The name of the type.
   final String name;
 
@@ -9,13 +9,12 @@ class GameDataType extends GameData<GameDataType> {
   final Map<int, double> onHitTbl;
 
   const GameDataType({
-    required super.id,
+    required this.id,
     required this.name,
     this.onHitTbl = const {},
   });
 
-  @override
-  GameData<GameDataType> copyWith({
+  GameDataType copyWith({
     String? name,
     Map<int, double>? onHitTbl,
   }) {

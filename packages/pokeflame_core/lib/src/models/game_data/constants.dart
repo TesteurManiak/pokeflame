@@ -1,6 +1,4 @@
-import 'package:pokeflame_core/pokeflame_core.dart';
-
-class GameDataConstants extends GameData<GameDataConstants> {
+class GameDataConstants {
   final int ivStatLimit;
   final int evLimit;
   final int vStatLimit;
@@ -8,7 +6,6 @@ class GameDataConstants extends GameData<GameDataConstants> {
   final int maxMoves;
 
   const GameDataConstants({
-    super.id = 0,
     this.ivStatLimit = 31,
     this.evLimit = 510,
     this.vStatLimit = 252,
@@ -16,7 +13,6 @@ class GameDataConstants extends GameData<GameDataConstants> {
     this.maxMoves = 4,
   });
 
-  @override
   GameDataConstants copyWith({
     int? ivStatLimit,
     int? evLimit,
@@ -25,7 +21,6 @@ class GameDataConstants extends GameData<GameDataConstants> {
     int? maxMoves,
   }) {
     return GameDataConstants(
-      id: id,
       ivStatLimit: ivStatLimit ?? this.ivStatLimit,
       evLimit: evLimit ?? this.evLimit,
       vStatLimit: vStatLimit ?? this.vStatLimit,

@@ -1,10 +1,11 @@
 import 'package:flutter/foundation.dart';
+import 'package:pokeflame_core/pokeflame_core.dart';
 
 @immutable
-abstract class GameData<T extends GameData<T>> {
-  final int id;
+class GameData {
+  final GameDataConstants constants;
 
-  const GameData({required this.id});
-
-  GameData<T> copyWith();
+  const GameData({
+    required this.constants,
+  });
 }

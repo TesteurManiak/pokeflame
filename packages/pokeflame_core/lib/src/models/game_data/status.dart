@@ -1,6 +1,5 @@
-import 'package:pokeflame_core/pokeflame_core.dart';
-
-class GameDataStatus extends GameData<GameDataStatus> {
+class GameDataStatus {
+  final int id;
   final String name;
 
   /// Assets path to the animation.
@@ -9,7 +8,7 @@ class GameDataStatus extends GameData<GameDataStatus> {
   final int iconPosition;
 
   GameDataStatus({
-    required super.id,
+    required this.id,
     required this.name,
     required this.animation,
     this.iconPosition = 0,
@@ -17,8 +16,7 @@ class GameDataStatus extends GameData<GameDataStatus> {
 
   final data = <String, dynamic>{};
 
-  @override
-  GameData<GameDataStatus> copyWith({
+  GameDataStatus copyWith({
     String? name,
     String? animation,
     int? iconPosition,

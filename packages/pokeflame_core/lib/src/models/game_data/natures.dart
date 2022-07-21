@@ -1,6 +1,7 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class GameDataNature extends GameData<GameDataNature> {
+class GameDataNature {
+  final int id;
   final double hpModifier;
   final double atkModifier;
   final double defModifier;
@@ -9,7 +10,7 @@ class GameDataNature extends GameData<GameDataNature> {
   final double spDefModifier;
 
   const GameDataNature({
-    required super.id,
+    required this.id,
     this.hpModifier = 1.0,
     this.atkModifier = 1.0,
     this.defModifier = 1.0,
@@ -43,8 +44,7 @@ class GameDataNature extends GameData<GameDataNature> {
     }
   }
 
-  @override
-  GameData<GameDataNature> copyWith({
+  GameDataNature copyWith({
     double? hpModifier,
     double? atkModifier,
     double? defModifier,

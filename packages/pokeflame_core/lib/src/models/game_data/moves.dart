@@ -1,6 +1,7 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class GameDataMove extends GameData<GameDataMove> {
+class GameDataMove {
+  final int id;
   final String name;
   final GameDataType type;
   final MoveCategory category;
@@ -15,7 +16,7 @@ class GameDataMove extends GameData<GameDataMove> {
   final String description;
 
   const GameDataMove({
-    required super.id,
+    required this.id,
     required this.name,
     required this.type,
     required this.category,
@@ -47,7 +48,6 @@ class GameDataMove extends GameData<GameDataMove> {
     return false;
   }
 
-  @override
   GameDataMove copyWith({
     String? name,
     GameDataType? type,

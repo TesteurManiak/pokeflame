@@ -1,6 +1,8 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class GameDataPokemon extends GameData<GameDataPokemon> {
+class GameDataPokemon {
+  final int id;
+
   /// The name of the pokemon.
   final String name;
 
@@ -79,7 +81,7 @@ class GameDataPokemon extends GameData<GameDataPokemon> {
   final List<EvolutionNode> evolutions;
 
   const GameDataPokemon({
-    required super.id,
+    required this.id,
     required this.name,
     this.form = 0,
     required this.type1,
@@ -115,8 +117,7 @@ class GameDataPokemon extends GameData<GameDataPokemon> {
     this.evolutions = const [],
   }) : assert(type1 != type2, 'type1 and type2 must be different');
 
-  @override
-  GameData<GameDataPokemon> copyWith({
+  GameDataPokemon copyWith({
     String? name,
     int? form,
     GameDataType? type1,

@@ -1,6 +1,8 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class GameDataItem extends GameData<GameDataItem> {
+class GameDataItem {
+  final int id;
+
   /// The name of the item.
   final String name;
 
@@ -21,7 +23,7 @@ class GameDataItem extends GameData<GameDataItem> {
   final String description;
 
   const GameDataItem({
-    required super.id,
+    required this.id,
     required this.name,
     String? namePlurals,
     required this.pocket,
@@ -35,8 +37,7 @@ class GameDataItem extends GameData<GameDataItem> {
     required this.description,
   }) : namePlurals = namePlurals ?? name;
 
-  @override
-  GameData<GameDataItem> copyWith({
+  GameDataItem copyWith({
     String? name,
     String? namePlurals,
     int? pocket,
