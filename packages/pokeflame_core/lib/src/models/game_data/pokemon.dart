@@ -133,6 +133,10 @@ class GameDataPokemon {
 
   int get baseForm => defaultForm >= 0 ? defaultForm : form;
 
+  int get baseStatTotal => stats.values.reduce((a, b) => a + b);
+
+  bool hasFlag(String flag) => flags.contains(flag);
+
   GameDataPokemon copyWith({
     String? name,
     int? form,
