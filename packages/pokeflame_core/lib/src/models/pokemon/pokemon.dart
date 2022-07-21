@@ -35,18 +35,10 @@ class Pokemon {
   /// Moves known by this Pokemon.
   final List<PokemonMove> moves;
 
-  /// The IDs of moves known by this Pokemon when it was obtained.
-  final List<int> firstMoves;
-
   /// An array of ribbons owned by this Pokemon.
   final List<String> ribbons;
 
-  final int cool;
-  final int beauty;
-  final int cute;
-  final int smart;
-  final int tough;
-  final int sheen;
+  final Map<PokeContestStatIndex, int> contestStats;
 
   /// The Pokerus strain and infection time.
   final int pokerus;
@@ -128,14 +120,8 @@ class Pokemon {
     this.statusCount,
     this.shiny = false,
     required this.moves,
-    required this.firstMoves,
     this.ribbons = const [],
-    this.cool = 0,
-    this.beauty = 0,
-    this.cute = 0,
-    this.smart = 0,
-    this.tough = 0,
-    this.sheen = 0,
+    this.contestStats = const {},
     this.pokerus = 0,
     required this.happiness,
     required this.pokeBall,
@@ -168,12 +154,6 @@ class Pokemon {
         form = form ?? speciesData.baseForm,
         _status = status,
         assert(moves.isNotEmpty),
-        assert(cool > 0),
-        assert(beauty > 0),
-        assert(cute > 0),
-        assert(smart > 0),
-        assert(tough > 0),
-        assert(sheen > 0),
         assert(happiness >= 0 && happiness <= 255);
 
   /// Return the HP calculated stat.

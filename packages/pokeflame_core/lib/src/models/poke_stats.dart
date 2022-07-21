@@ -8,3 +8,12 @@ enum PokeStatIndex {
   accuracy,
   evasion,
 }
+
+enum PokeContestStatIndex {
+  cool,
+  beauty,
+  cute,
+  smart,
+  tough,
+  sheen,
+}
