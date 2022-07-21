@@ -214,7 +214,10 @@ class Pokemon {
     final iv = individualValues[stat] ?? 0;
     final ev = effortValues[stat] ?? 0;
     final natureModifier = nature[stat];
-    return ((.01 * (2 * base + iv)).floor() * natureModifier).floor();
+
+    return (((.01 * (2 * base + iv + (.25 * ev).floor()) * level).floor() + 5) *
+            natureModifier)
+        .floor();
   }
 
   int get level {
