@@ -8,6 +8,8 @@ class GameDataNature {
   final double spdModifier;
   final double spAtkModifier;
   final double spDefModifier;
+  final NatureFlavor favoriteFlavor;
+  final NatureFlavor dislikedFlavor;
 
   const GameDataNature({
     required this.id,
@@ -17,6 +19,8 @@ class GameDataNature {
     this.spdModifier = 1.0,
     this.spAtkModifier = 1.0,
     this.spDefModifier = 1.0,
+    this.favoriteFlavor = NatureFlavor.none,
+    this.dislikedFlavor = NatureFlavor.none,
   })  : assert(hpModifier >= 0.0),
         assert(atkModifier >= 0.0),
         assert(defModifier >= 0.0),
@@ -62,4 +66,13 @@ class GameDataNature {
       spDefModifier: spDefModifier ?? this.spDefModifier,
     );
   }
+}
+
+enum NatureFlavor {
+  spicy,
+  dry,
+  sweet,
+  bitter,
+  sour,
+  none,
 }
