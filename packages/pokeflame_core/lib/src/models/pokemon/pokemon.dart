@@ -29,7 +29,21 @@ class Pokemon {
   /// This Pokemon's shinyness.
   final bool shiny;
 
+  /// Moves known by this Pokemon.
   final List<PokemonMove> moves;
+
+  /// The IDs of moves known by this Pokemon when it was obtained.
+  final List<int> firstMoves;
+
+  /// An array of ribbons owned by this Pokemon.
+  final List<String> ribbons;
+
+  final int cool;
+  final int beauty;
+  final int cute;
+  final int smart;
+  final int tough;
+  final int sheen;
 
   const Pokemon({
     required this.species,
@@ -41,5 +55,13 @@ class Pokemon {
     this.statusCount,
     this.shiny = false,
     required this.moves,
+    required this.firstMoves,
+    this.ribbons = const [],
+    this.cool = 0,
+    this.beauty = 0,
+    this.cute = 0,
+    this.smart = 0,
+    this.tough = 0,
+    this.sheen = 0,
   }) : assert(moves.length > 0);
 }
