@@ -1,6 +1,7 @@
+import 'package:pokeflame_basekit/pokeflame_basekit.dart';
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class NaturesKit {
+class NaturesKit extends DataKit<GameDataNature> {
   const NaturesKit._();
 
   static const hardy = GameDataNature(id: 0, name: 'Hardy');
@@ -103,7 +104,7 @@ class NaturesKit {
     dislikedFlavor: NatureFlavor.bitter,
   );
 
-  static List<GameDataNature> get props => [
+  static List<GameDataNature> get properties => [
         hardy,
         lonely,
         brave,
@@ -120,4 +121,7 @@ class NaturesKit {
         jolly,
         naive,
       ];
+
+  @override
+  List<GameDataNature> get props => properties;
 }

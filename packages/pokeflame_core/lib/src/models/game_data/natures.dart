@@ -1,7 +1,6 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class GameDataNature {
-  final int id;
+class GameDataNature extends DataProperty {
   final String name;
   final double hpModifier;
   final double atkModifier;
@@ -13,7 +12,7 @@ class GameDataNature {
   final NatureFlavor dislikedFlavor;
 
   const GameDataNature({
-    required this.id,
+    required super.id,
     required this.name,
     this.hpModifier = 1.0,
     this.atkModifier = 1.0,

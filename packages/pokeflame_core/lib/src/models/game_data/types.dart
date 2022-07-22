@@ -1,6 +1,6 @@
-class GameDataType {
-  final int id;
+import 'package:pokeflame_core/pokeflame_core.dart';
 
+class GameDataType extends DataProperty {
   /// The name of the type.
   final String name;
 
@@ -9,7 +9,7 @@ class GameDataType {
   final Map<int, double> onHitTbl;
 
   const GameDataType({
-    required this.id,
+    required super.id,
     required this.name,
     this.onHitTbl = const {},
   });
