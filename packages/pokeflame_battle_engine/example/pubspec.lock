@@ -268,10 +268,24 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.2"
+  pokeflame_basekit:
+    dependency: "direct main"
+    description:
+      path: "../../pokeflame_basekit"
+      relative: true
+    source: path
+    version: "0.0.1"
   pokeflame_battle_engine:
     dependency: "direct main"
     description:
       path: ".."
+      relative: true
+    source: path
+    version: "0.0.1"
+  pokeflame_core:
+    dependency: "direct overridden"
+    description:
+      path: "../../pokeflame_core"
       relative: true
     source: path
     version: "0.0.1"

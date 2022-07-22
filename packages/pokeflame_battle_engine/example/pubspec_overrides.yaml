@@ -1,4 +1,8 @@
-# melos_managed_dependency_overrides: pokeflame_battle_engine
+# melos_managed_dependency_overrides: pokeflame_battle_engine,pokeflame_basekit,pokeflame_core
 dependency_overrides:
+  pokeflame_basekit:
+    path: ..\\..\\pokeflame_basekit
   pokeflame_battle_engine:
     path: ..
+  pokeflame_core:
+    path: ..\\..\\pokeflame_core
