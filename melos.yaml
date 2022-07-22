@@ -1,10 +1,12 @@
 name: pokeflame
+repository: https://github.com/TesteurManiak/pokeflame
+
 packages:
   - packages/**
-
-command:
-  bootstrap:
-    usePubspecOverrides: true
+ignore:
+  - "packages/**/example"
+ide:
+  intellij: false
 
 scripts:
   analyze:
@@ -23,3 +25,7 @@ scripts:
     description: Run `flutter test --coverage` for a specific package.
     select-package:
       dir-exists: "test"
+
+command:
+  bootstrap:
+    usePubspecOverrides: true
