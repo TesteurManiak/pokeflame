@@ -1,9 +1,10 @@
-class GameDataEggGroup {
-  final int id;
+import 'package:pokeflame_core/pokeflame_core.dart';
+
+class GameDataEggGroup extends DataProperty {
   final String name;
 
   const GameDataEggGroup({
-    required this.id,
+    required super.id,
     required this.name,
   });
 }

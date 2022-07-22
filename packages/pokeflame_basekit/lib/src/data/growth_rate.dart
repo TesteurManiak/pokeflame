@@ -3,7 +3,7 @@ import 'dart:math' as math;
 import 'package:pokeflame_basekit/pokeflame_basekit.dart';
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class GrowthRateKit {
+class GrowthRateKit extends DataKit<GameDataGrowthRate> {
   final GameDataConstants _constants;
 
   GrowthRateKit({required GameDataConstants constants})
@@ -16,7 +16,7 @@ class GrowthRateKit {
   late final medium = GameDataGrowthRate(
     id: 0,
     name: 'Medium',
-    expValues: [
+    expValues: const [
       -1,
       0,
       8,
@@ -126,7 +126,7 @@ class GrowthRateKit {
   late final erratic = GameDataGrowthRate(
     id: 1,
     name: 'Erratic',
-    expValues: [
+    expValues: const [
       -1,
       0,
       15,
@@ -236,7 +236,7 @@ class GrowthRateKit {
   late final fluctuating = GameDataGrowthRate(
     id: 2,
     name: 'Fluctuating',
-    expValues: [
+    expValues: const [
       -1,
       0,
       4,
@@ -349,7 +349,7 @@ class GrowthRateKit {
   late final fast = GameDataGrowthRate(
     id: 3,
     name: 'Fast',
-    expValues: [
+    expValues: const [
       -1,
       0,
       6,
@@ -459,7 +459,7 @@ class GrowthRateKit {
   late final slow = GameDataGrowthRate(
     id: 4,
     name: 'Slow',
-    expValues: [
+    expValues: const [
       -1,
       0,
       10,
@@ -566,6 +566,7 @@ class GrowthRateKit {
     constants: _constants,
   );
 
+  @override
   List<GameDataGrowthRate> get props => [
         medium,
         erratic,

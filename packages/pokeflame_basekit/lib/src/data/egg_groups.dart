@@ -1,6 +1,7 @@
+import 'package:pokeflame_basekit/src/utils/data_kit.dart';
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class EggGroupsKit {
+class EggGroupsKit extends DataKit<GameDataEggGroup> {
   const EggGroupsKit._();
 
   static const monster = GameDataEggGroup(id: 1, name: 'Monster');
@@ -18,4 +19,25 @@ class EggGroupsKit {
   static const ditto = GameDataEggGroup(id: 13, name: 'Ditto');
   static const dragon = GameDataEggGroup(id: 14, name: 'Dragon');
   static const noEggs = GameDataEggGroup(id: 15, name: 'Undiscovered');
+
+  static List<GameDataEggGroup> get properties => [
+        monster,
+        water1,
+        bug,
+        flying,
+        ground,
+        fairy,
+        plant,
+        humanshape,
+        water3,
+        mineral,
+        indeterminate,
+        water2,
+        ditto,
+        dragon,
+        noEggs,
+      ];
+
+  @override
+  List<GameDataEggGroup> get props => properties;
 }

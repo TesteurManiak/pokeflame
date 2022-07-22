@@ -4,15 +4,14 @@ import 'package:pokeflame_core/pokeflame_core.dart';
 
 typedef ExpFormulaCallback = int Function(int level);
 
-class GameDataGrowthRate {
-  final int id;
+class GameDataGrowthRate extends DataProperty {
   final String name;
   final List<int> expValues;
   final ExpFormulaCallback? expFormula;
   final GameDataConstants _constants;
 
   const GameDataGrowthRate({
-    required this.id,
+    required super.id,
     required this.name,
     required this.expValues,
     this.expFormula,
