@@ -19,24 +19,6 @@ class GameDataPokemon extends DataProperty {
   /// Effort values obtained after defeating this pokemon.
   final Map<PokeStatIndex, int> effortValues;
 
-  /// HP Effort value obtained when defeating this pokemon.
-  final int evHp;
-
-  /// Atk Effort value obtained when defeating this pokemon.
-  final int evAtk;
-
-  /// Def Effort value obtained when defeating this pokemon.
-  final int evDef;
-
-  /// Spd Effort value obtained when defeating this pokemon.
-  final int evSpd;
-
-  /// SpAtk Effort value obtained when defeating this pokemon.
-  final int evSpAtk;
-
-  /// SpDef Effort value obtained when defeating this pokemon.
-  final int evSpDef;
-
   /// The abilities of the pokemon.
   final List<GameDataAbility> abilities;
 
@@ -87,13 +69,7 @@ class GameDataPokemon extends DataProperty {
     required this.type1,
     this.type2,
     required this.stats,
-    required this.effortValues,
-    this.evHp = 0,
-    this.evAtk = 0,
-    this.evDef = 0,
-    this.evSpd = 0,
-    this.evSpAtk = 0,
-    this.evSpDef = 0,
+    this.effortValues = const {},
     required this.abilities,
     required this.growthRate,
     required this.genderRatio,
@@ -112,9 +88,9 @@ class GameDataPokemon extends DataProperty {
     required this.kind,
     this.flags = const [],
     required this.description,
-    required this.battlerPlayerY,
-    required this.battlerEnemyY,
-    required this.battlerAltitude,
+    this.battlerPlayerY = 0,
+    this.battlerEnemyY = 0,
+    this.battlerAltitude = 0,
     this.evolutions = const [],
   }) : assert(type1 != type2, 'type1 and type2 must be different');
 

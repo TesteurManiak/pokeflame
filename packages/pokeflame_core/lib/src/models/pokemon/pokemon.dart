@@ -55,10 +55,6 @@ class Pokemon {
   /// IV values for each stat.
   final Map<PokeStatIndex, int> individualValues;
 
-  /// A map of booleans indicating whether a stat is made to have maximum IVs
-  /// (for Hyper Training).
-  final Map<PokeStatIndex, bool> ivMaxed;
-
   /// This Pokemon's effort values. By default values starts at 0.
   final Map<PokeStatIndex, int> effortValues;
 
@@ -126,16 +122,8 @@ class Pokemon {
     required this.happiness,
     required this.pokeBall,
     this.markings = const [],
-    required this.individualValues,
-    required this.ivMaxed,
-    this.effortValues = const {
-      PokeStatIndex.hp: 0,
-      PokeStatIndex.attack: 0,
-      PokeStatIndex.defense: 0,
-      PokeStatIndex.speed: 0,
-      PokeStatIndex.spAttack: 0,
-      PokeStatIndex.spDefense: 0,
-    },
+    this.individualValues = const {},
+    this.effortValues = const {},
     this.owner,
     this.obtainMethod,
     this.obtainMap,
