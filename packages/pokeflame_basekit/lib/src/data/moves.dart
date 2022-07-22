@@ -19,7 +19,6 @@ class MovesKit extends DataKit<GameDataMove> {
     flags: const [
       MoveFlags.canMirrorMove,
       MoveFlags.canProtect,
-      MoveFlags.canMirrorMove
     ],
     description:
         'Using its tough and impressive horn, the user rams into the target with no letup.',
