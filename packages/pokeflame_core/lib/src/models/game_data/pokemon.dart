@@ -1,8 +1,6 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class GameDataPokemon {
-  final int id;
-
+class GameDataPokemon extends DataProperty {
   /// The name of the pokemon.
   final String name;
 
@@ -83,7 +81,7 @@ class GameDataPokemon {
   final List<EvolutionNode> evolutions;
 
   const GameDataPokemon({
-    required this.id,
+    required super.id,
     required this.name,
     this.form = 0,
     required this.type1,
@@ -136,6 +134,10 @@ class GameDataPokemon {
   int get baseStatTotal => stats.values.reduce((a, b) => a + b);
 
   bool hasFlag(String flag) => flags.contains(flag);
+
+  void playCryFromSpecies({int form = 0, int volume = 90, int pitch = 100}) {
+    // TODO: Implement
+  }
 }
 
 class EvolutionNode {

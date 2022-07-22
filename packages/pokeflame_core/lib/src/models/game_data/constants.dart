@@ -1,8 +1,17 @@
 class GameDataConstants {
+  /// Max total IVs.
   final int ivStatLimit;
+
+  /// Max total EVs.
   final int evLimit;
+
+  /// Max EVs that a single stat can have.
   final int vStatLimit;
+
+  /// Maximum length a Pokémon's nickname can be.
   final int maxNameSize;
+
+  /// Maximum number of moves a Pokémon can know at once.
   final int maxMoves;
 
   /// The maximum amount of money the player can have.

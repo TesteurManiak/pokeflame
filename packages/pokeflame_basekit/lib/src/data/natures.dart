@@ -121,7 +121,4 @@ class NaturesKit extends DataKit<GameDataNature> {
         jolly,
         naive,
       ];
-
-  @override
-  List<GameDataNature> get props => properties;
 }

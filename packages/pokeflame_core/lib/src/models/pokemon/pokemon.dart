@@ -156,6 +156,13 @@ class Pokemon {
         assert(moves.isNotEmpty),
         assert(happiness >= 0 && happiness <= 255);
 
+  void playCry({int volume = 90, int pitch = 100}) =>
+      speciesData.playCryFromSpecies(
+        form: form,
+        volume: volume,
+        pitch: pitch,
+      );
+
   /// Return the HP calculated stat.
   int get totalHp {
     final iv = individualValues[PokeStatIndex.hp] ?? 0;

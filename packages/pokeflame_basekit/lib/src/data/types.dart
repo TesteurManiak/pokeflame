@@ -12,7 +12,4 @@ class TypesKit extends DataKit<GameDataType> {
   static List<GameDataType> get properties => [
         bug,
       ];
-
-  @override
-  List<GameDataType> get props => properties;
 }

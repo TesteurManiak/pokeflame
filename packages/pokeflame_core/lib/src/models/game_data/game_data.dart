@@ -25,6 +25,9 @@ class GameData {
         assert(moves.length > 0),
         assert(natures.length > 0),
         assert(pokemon.length > 0);
+
+  /// Load assets for items, moves, and pokemon.
+  Future<void> load() async {}
 }
 
 @immutable

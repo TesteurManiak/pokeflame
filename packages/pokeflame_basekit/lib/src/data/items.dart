@@ -5,7 +5,4 @@ class ItemsKit extends DataKit<GameDataItem> {
   const ItemsKit._();
 
   static List<GameDataItem> get properties => [];
-
-  @override
-  List<GameDataItem> get props => properties;
 }

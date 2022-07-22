@@ -1,5 +1,6 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
 
+/// Move objects known by [Pokemon].
 class PokemonMove {
   final GameDataMove move;
 

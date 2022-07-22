@@ -37,7 +37,4 @@ class EggGroupsKit extends DataKit<GameDataEggGroup> {
         dragon,
         noEggs,
       ];
-
-  @override
-  List<GameDataEggGroup> get props => properties;
 }
