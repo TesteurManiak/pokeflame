@@ -1,7 +1,6 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class GameDataMove {
-  final int id;
+class GameDataMove extends DataProperty {
   final String name;
   final GameDataType type;
   final MoveCategory category;
@@ -15,8 +14,10 @@ class GameDataMove {
   final int effectChance;
   final String description;
 
+  final Map<int, GameDataItem> _items;
+
   const GameDataMove({
-    required this.id,
+    required super.id,
     required this.name,
     required this.type,
     required this.category,
@@ -29,7 +30,8 @@ class GameDataMove {
     this.flags = const [],
     this.effectChance = 0,
     required this.description,
-  });
+    required Map<int, GameDataItem> items,
+  }) : _items = items;
 
   bool hasFlag(MoveFlags flag) => flags.contains(flag);
 
@@ -43,41 +45,7 @@ class GameDataMove {
     return category == MoveCategory.special;
   }
 
-  bool get isHiddenMove {
-    // TODO: Implement this.
-    return false;
-  }
-
-  GameDataMove copyWith({
-    String? name,
-    GameDataType? type,
-    MoveCategory? category,
-    int? power,
-    int? accuracy,
-    int? totalPP,
-    MoveTarget? target,
-    int? priority,
-    Function? functionCode,
-    List<MoveFlags>? flags,
-    int? effectChance,
-    String? description,
-  }) {
-    return GameDataMove(
-      id: id,
-      name: name ?? this.name,
-      type: type ?? this.type,
-      category: category ?? this.category,
-      power: power ?? this.power,
-      accuracy: accuracy ?? this.accuracy,
-      totalPP: totalPP ?? this.totalPP,
-      target: target ?? this.target,
-      priority: priority ?? this.priority,
-      functionCode: functionCode ?? this.functionCode,
-      flags: flags ?? this.flags,
-      effectChance: effectChance ?? this.effectChance,
-      description: description ?? this.description,
-    );
-  }
+  bool get isHiddenMove => _items[id]?.isHM ?? false;
 }
 
 enum MoveCategory { physical, special, status }

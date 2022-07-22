@@ -49,27 +49,6 @@ class GameDataNature {
         return 1.0;
     }
   }
-
-  GameDataNature copyWith({
-    String? name,
-    double? hpModifier,
-    double? atkModifier,
-    double? defModifier,
-    double? spdModifier,
-    double? spAtkModifier,
-    double? spDefModifier,
-  }) {
-    return GameDataNature(
-      id: id,
-      name: name ?? this.name,
-      hpModifier: hpModifier ?? this.hpModifier,
-      atkModifier: atkModifier ?? this.atkModifier,
-      defModifier: defModifier ?? this.defModifier,
-      spdModifier: spdModifier ?? this.spdModifier,
-      spAtkModifier: spAtkModifier ?? this.spAtkModifier,
-      spDefModifier: spDefModifier ?? this.spDefModifier,
-    );
-  }
 }
 
 enum NatureFlavor {

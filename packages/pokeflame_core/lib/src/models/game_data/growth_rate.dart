@@ -9,19 +9,19 @@ class GameDataGrowthRate {
   final String name;
   final List<int> expValues;
   final ExpFormulaCallback? expFormula;
-  final GameDataConstants constants;
+  final GameDataConstants _constants;
 
   const GameDataGrowthRate({
     required this.id,
     required this.name,
     required this.expValues,
     this.expFormula,
-    required this.constants,
-  });
+    required GameDataConstants constants,
+  }) : _constants = constants;
 
   /// Return the maximum level a Pokemon can attains according to
   /// [GameDataConstants].
-  int get maxLevel => constants.maxLevel;
+  int get maxLevel => _constants.maxLevel;
 
   /// Return the minimum Exp needed to be at the given level.
   int minimumExpForLevel(int level) {

@@ -1,8 +1,6 @@
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class GameDataItem {
-  final int id;
-
+class GameDataItem extends DataProperty {
   /// The name of the item.
   final String name;
 
@@ -16,14 +14,14 @@ class GameDataItem {
 
   final int? sellPrice;
   final TargetUse? fieldUse;
-  final TargetUse? battleUse;
+  final BattleUse? battleUse;
   final bool? consumable;
   final List<String> flags;
   final GameDataMove? move;
   final String description;
 
   const GameDataItem({
-    required this.id,
+    required super.id,
     required this.name,
     String? namePlurals,
     required this.pocket,
@@ -37,34 +35,11 @@ class GameDataItem {
     required this.description,
   }) : namePlurals = namePlurals ?? name;
 
-  GameDataItem copyWith({
-    String? name,
-    String? namePlurals,
-    int? pocket,
-    int? price,
-    int? sellPrice,
-    TargetUse? fieldUse,
-    TargetUse? battleUse,
-    bool? consumable,
-    List<String>? flags,
-    GameDataMove? move,
-    String? description,
-  }) {
-    return GameDataItem(
-      id: id,
-      name: name ?? this.name,
-      namePlurals: namePlurals ?? this.namePlurals,
-      pocket: pocket ?? this.pocket,
-      price: price ?? this.price,
-      sellPrice: sellPrice ?? this.sellPrice,
-      fieldUse: fieldUse ?? this.fieldUse,
-      battleUse: battleUse ?? this.battleUse,
-      consumable: consumable ?? this.consumable,
-      flags: flags ?? this.flags,
-      move: move ?? this.move,
-      description: description ?? this.description,
-    );
-  }
+  bool hasFlag(String flag) => flags.contains(flag);
+  bool get isTM => fieldUse == TargetUse.tm;
+  bool get isHM => fieldUse == TargetUse.hm;
 }
 
-enum TargetUse { direct, onPokemon }
+enum TargetUse { onPokemon, direct, tm, hm, tr }
+
+enum BattleUse { onPokemon, onMove }

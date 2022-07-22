@@ -1,10 +1,13 @@
 import 'package:pokeflame_basekit/src/data/types.dart';
+import 'package:pokeflame_basekit/src/utils/data_kit.dart';
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-class MovesKit {
-  const MovesKit._();
+class MovesKit extends DataKit<GameDataMove> {
+  final Map<int, GameDataItem> _items;
 
-  static const megahorn = GameDataMove(
+  MovesKit({required Map<int, GameDataItem> items}) : _items = items;
+
+  late final megahorn = GameDataMove(
     id: 1,
     name: 'Megahorn',
     type: TypesKit.bug,
@@ -13,12 +16,18 @@ class MovesKit {
     accuracy: 85,
     totalPP: 10,
     target: MoveTarget.nearOther,
-    flags: [
+    flags: const [
       MoveFlags.canMirrorMove,
       MoveFlags.canProtect,
       MoveFlags.canMirrorMove
     ],
     description:
         'Using its tough and impressive horn, the user rams into the target with no letup.',
+    items: _items,
   );
+
+  @override
+  List<GameDataMove> get props => [
+        megahorn,
+      ];
 }

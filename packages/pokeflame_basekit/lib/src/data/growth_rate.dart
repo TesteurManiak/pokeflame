@@ -4,9 +4,10 @@ import 'package:pokeflame_basekit/pokeflame_basekit.dart';
 import 'package:pokeflame_core/pokeflame_core.dart';
 
 class GrowthRateKit {
-  final GameDataConstants constants;
+  final GameDataConstants _constants;
 
-  GrowthRateKit({required this.constants});
+  GrowthRateKit({required GameDataConstants constants})
+      : _constants = constants;
 
   /// Default implementation for the growth rate.
   static final base = GrowthRateKit(constants: ConstantsKit.base);
@@ -119,7 +120,7 @@ class GrowthRateKit {
       1000000
     ],
     expFormula: (level) => math.pow(level, 3).toInt(),
-    constants: constants,
+    constants: _constants,
   );
 
   late final erratic = GameDataGrowthRate(
@@ -229,7 +230,7 @@ class GrowthRateKit {
       600000
     ],
     expFormula: (level) => math.pow(level, 4) * 3 ~/ 500,
-    constants: constants,
+    constants: _constants,
   );
 
   late final fluctuating = GameDataGrowthRate(
@@ -342,7 +343,7 @@ class GrowthRateKit {
       final rate = math.max(82 - ((level - 100) / 2.0), 40);
       return math.pow(level, 4) * rate ~/ 5000;
     },
-    constants: constants,
+    constants: _constants,
   );
 
   late final fast = GameDataGrowthRate(
@@ -452,7 +453,7 @@ class GrowthRateKit {
       800000,
     ],
     expFormula: (level) => math.pow(level, 3) * 4 ~/ 5,
-    constants: constants,
+    constants: _constants,
   );
 
   late final slow = GameDataGrowthRate(
@@ -562,8 +563,14 @@ class GrowthRateKit {
       1250000,
     ],
     expFormula: (level) => math.pow(level, 3) * 5 ~/ 4,
-    constants: constants,
+    constants: _constants,
   );
 
-  List<GameDataGrowthRate> get props => [medium, erratic, fluctuating];
+  List<GameDataGrowthRate> get props => [
+        medium,
+        erratic,
+        fluctuating,
+        fast,
+        slow,
+      ];
 }

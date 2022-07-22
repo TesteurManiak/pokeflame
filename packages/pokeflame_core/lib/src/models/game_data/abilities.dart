@@ -8,12 +8,4 @@ class GameDataAbility {
     required this.name,
     required this.description,
   });
-
-  GameDataAbility copyWith({String? name, String? description}) {
-    return GameDataAbility(
-      id: id,
-      name: name ?? this.name,
-      description: description ?? this.description,
-    );
-  }
 }

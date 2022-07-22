@@ -13,15 +13,4 @@ class GameDataType {
     required this.name,
     this.onHitTbl = const {},
   });
-
-  GameDataType copyWith({
-    String? name,
-    Map<int, double>? onHitTbl,
-  }) {
-    return GameDataType(
-      id: id,
-      name: name ?? this.name,
-      onHitTbl: onHitTbl ?? this.onHitTbl,
-    );
-  }
 }

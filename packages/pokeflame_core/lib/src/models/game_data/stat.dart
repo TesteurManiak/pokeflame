@@ -16,19 +16,4 @@ class GameDataStat {
     required this.type,
     required this.pbsOrder,
   });
-
-  GameDataStat copyWith({
-    String? name,
-    String? shortName,
-    String? type,
-    PokeStatIndex? pbsOrder,
-  }) {
-    return GameDataStat(
-      id: id,
-      name: name ?? this.name,
-      shortName: shortName ?? this.shortName,
-      type: type ?? this.type,
-      pbsOrder: pbsOrder ?? this.pbsOrder,
-    );
-  }
 }

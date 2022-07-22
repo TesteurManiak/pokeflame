@@ -29,16 +29,4 @@ class PokemonMove {
   String get name => move.name;
   String get description => move.description;
   bool get isHiddenMove => move.isHiddenMove;
-
-  PokemonMove copyWith({
-    GameDataMove? move,
-    int? pp,
-    int? ppUp,
-  }) {
-    return PokemonMove(
-      move: move ?? this.move,
-      pp: pp ?? this.pp,
-      ppUp: ppUp ?? this.ppUp,
-    );
-  }
 }

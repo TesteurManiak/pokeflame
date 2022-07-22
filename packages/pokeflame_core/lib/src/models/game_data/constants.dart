@@ -56,42 +56,4 @@ class GameDataConstants {
     this.superShiny = false,
     this.pokerusChance = 3,
   });
-
-  GameDataConstants copyWith({
-    int? ivStatLimit,
-    int? evLimit,
-    int? vStatLimit,
-    int? maxNameSize,
-    int? maxMoves,
-    int? maxMoney,
-    int? maxCoins,
-    int? maxBattlePoints,
-    int? maxSoot,
-    int? maxPlayerNameSize,
-    int? maxPartySize,
-    int? maxLevel,
-    int? eggLevel,
-    int? shinyChance,
-    bool? superShiny,
-    int? pokerusChance,
-  }) {
-    return GameDataConstants(
-      ivStatLimit: ivStatLimit ?? this.ivStatLimit,
-      evLimit: evLimit ?? this.evLimit,
-      vStatLimit: vStatLimit ?? this.vStatLimit,
-      maxNameSize: maxNameSize ?? this.maxNameSize,
-      maxMoves: maxMoves ?? this.maxMoves,
-      maxMoney: maxMoney ?? this.maxMoney,
-      maxCoins: maxCoins ?? this.maxCoins,
-      maxBattlePoints: maxBattlePoints ?? this.maxBattlePoints,
-      maxSoot: maxSoot ?? this.maxSoot,
-      maxPlayerNameSize: maxPlayerNameSize ?? this.maxPlayerNameSize,
-      maxPartySize: maxPartySize ?? this.maxPartySize,
-      maxLevel: maxLevel ?? this.maxLevel,
-      eggLevel: eggLevel ?? this.eggLevel,
-      shinyChance: shinyChance ?? this.shinyChance,
-      superShiny: superShiny ?? this.superShiny,
-      pokerusChance: pokerusChance ?? this.pokerusChance,
-    );
-  }
 }

@@ -26,3 +26,12 @@ class GameData {
         assert(natures.length > 0),
         assert(pokemon.length > 0);
 }
+
+@immutable
+abstract class DataProperty {
+  final int id;
+
+  const DataProperty({
+    required this.id,
+  });
+}
