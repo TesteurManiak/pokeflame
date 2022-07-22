@@ -24,7 +24,7 @@ class GameDataGrowthRate extends DataProperty {
 
   /// Return the minimum Exp needed to be at the given level.
   int minimumExpForLevel(int level) {
-    if (level <= 1) throw ArgumentError('Level $level is invalid.');
+    if (level < 1) throw ArgumentError('Level $level is invalid.');
     final minLevel = math.min(level, maxLevel);
     if (minLevel < expValues.length) return expValues[minLevel];
 

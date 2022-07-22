@@ -283,7 +283,7 @@ packages:
     source: path
     version: "0.0.1"
   pokeflame_core:
-    dependency: "direct overridden"
+    dependency: "direct main"
     description:
       path: "../../pokeflame_core"
       relative: true

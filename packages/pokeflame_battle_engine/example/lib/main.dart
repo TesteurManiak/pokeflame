@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(
         pkmn1: Pokemon(
           speciesData: _pkmnKit.bulbasaur,
-          hp: _pkmnKit.bulbasaur.stats[PokeStatIndex.hp]!,
           moves: [
             PokemonMove(
               move: _movesKit.megahorn,
@@ -33,7 +32,6 @@ class MyApp extends StatelessWidget {
         ),
         pkmn2: Pokemon(
           speciesData: _pkmnKit.bulbasaur,
-          hp: _pkmnKit.bulbasaur.stats[PokeStatIndex.hp]!,
           moves: [
             PokemonMove(
               move: _movesKit.megahorn,
@@ -69,13 +67,19 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
+        child: Text.rich(
+          TextSpan(
+            children: [
+              TextSpan(text: 'Name: ${widget.pkmn1.name}'),
+              TextSpan(text: '\nLevel: ${widget.pkmn1.level}'),
+              TextSpan(
+                text: '\nHP: ${widget.pkmn1.hp}/${widget.pkmn1.totalHp}',
+              ),
+              TextSpan(text: '\nAtk: ${widget.pkmn1.attack}'),
+              TextSpan(text: '\nDef: ${widget.pkmn1.defense}'),
+              TextSpan(text: '\nSpd: ${widget.pkmn1.speed}'),
+            ],
+          ),
         ),
       ),
     );

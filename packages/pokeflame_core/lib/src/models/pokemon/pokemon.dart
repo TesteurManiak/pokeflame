@@ -3,7 +3,7 @@ import 'package:pokeflame_core/pokeflame_core.dart';
 /// Instance of this class represents a single pokemon.
 class Pokemon {
   /// The pokemon species.
-  final GameDataPokemon speciesData;
+  final GameDataPokemon _speciesData;
 
   /// If defined, this Pokemon's form will be this value even if a MultipleForms
   /// handler tries to say otherwise.
@@ -21,7 +21,7 @@ class Pokemon {
   final int stepsToHatch;
 
   /// Return the current HP.
-  int _hp;
+  late int _hp;
 
   GameDataStatus? _status;
 
@@ -103,15 +103,17 @@ class Pokemon {
 
   final GameDataNature nature;
 
-  int form;
+  final String? nickname;
+
+  late int form;
 
   Pokemon({
-    required this.speciesData,
+    required GameDataPokemon speciesData,
     this.forcedForm,
     this.timeFormSet,
     this.exp = 0,
     this.stepsToHatch = 0,
-    required int hp,
+    int? hp,
     GameDataStatus? status,
     this.statusCount,
     this.shiny = false,
@@ -138,14 +140,17 @@ class Pokemon {
     this.cannotTrade = false,
     required this.nature,
     int? form,
-  })  : _hp = hp,
-        form = form ?? speciesData.baseForm,
+    this.nickname,
+  })  : _speciesData = speciesData,
         _status = status,
         assert(moves.isNotEmpty),
-        assert(happiness >= 0 && happiness <= 255);
+        assert(happiness >= 0 && happiness <= 255) {
+    _hp = hp ?? totalHp;
+    this.form = form ?? _speciesData.baseForm;
+  }
 
   void playCry({int volume = 90, int pitch = 100}) =>
-      speciesData.playCryFromSpecies(
+      _speciesData.playCryFromSpecies(
         form: form,
         volume: volume,
         pitch: pitch,
@@ -155,7 +160,7 @@ class Pokemon {
   int get totalHp {
     final iv = individualValues[PokeStatIndex.hp] ?? 0;
     final ev = effortValues[PokeStatIndex.hp] ?? 0;
-    final base = speciesData.stats[PokeStatIndex.hp]!;
+    final base = _speciesData.stats[PokeStatIndex.hp]!;
 
     return (.01 * (2 * base + iv + (.25 * ev).floor()) * level).floor() +
         level +
@@ -164,31 +169,31 @@ class Pokemon {
 
   /// Return the attack calculated stat.
   int get attack => _calculateStat(
-        base: speciesData.stats[PokeStatIndex.attack]!,
+        base: _speciesData.stats[PokeStatIndex.attack]!,
         stat: PokeStatIndex.attack,
       );
 
   /// Return the defense calculated stat.
   int get defense => _calculateStat(
-        base: speciesData.stats[PokeStatIndex.defense]!,
+        base: _speciesData.stats[PokeStatIndex.defense]!,
         stat: PokeStatIndex.defense,
       );
 
   /// Return the speed calculated stat.
   int get speed => _calculateStat(
-        base: speciesData.stats[PokeStatIndex.speed]!,
+        base: _speciesData.stats[PokeStatIndex.speed]!,
         stat: PokeStatIndex.speed,
       );
 
   /// Return the special attack calculated stat.
   int get specialAttack => _calculateStat(
-        base: speciesData.stats[PokeStatIndex.spAttack]!,
+        base: _speciesData.stats[PokeStatIndex.spAttack]!,
         stat: PokeStatIndex.spAttack,
       );
 
   /// Return the special defense calculated stat.
   int get specialDefense => _calculateStat(
-        base: speciesData.stats[PokeStatIndex.spDefense]!,
+        base: _speciesData.stats[PokeStatIndex.spDefense]!,
         stat: PokeStatIndex.spDefense,
       );
 
@@ -222,10 +227,10 @@ class Pokemon {
   bool get isEgg => stepsToHatch > 0;
 
   /// Return this Pokemon's growth rate.
-  GameDataGrowthRate get growthRate => speciesData.growthRate;
+  GameDataGrowthRate get growthRate => _speciesData.growthRate;
 
   /// Return this Pokemon's base Expedition value.
-  int get baseExp => speciesData.baseExp;
+  int get baseExp => _speciesData.baseExp;
 
   /// Return a number between 0 and 1 indicating how much of the current level's
   /// Exp this Pokemon has.
@@ -266,6 +271,8 @@ class Pokemon {
 
   /// Return whether the Pokemon is not fainted and not an egg.
   bool isAble() => !isEgg && hp > 0;
+
+  String get name => nickname ?? _speciesData.name;
 
   void healStatus() {
     if (isEgg) return;
