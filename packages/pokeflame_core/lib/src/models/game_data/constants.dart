@@ -47,7 +47,7 @@ class GameDataConstants {
   /// The odds of a wild Pokémon/bred egg having Pokérus (out of 65536).
   final int pokerusChance;
 
-  const GameDataConstants({
+  const GameDataConstants._({
     this.ivStatLimit = 31,
     this.evLimit = 510,
     this.vStatLimit = 252,
@@ -65,4 +65,83 @@ class GameDataConstants {
     this.superShiny = false,
     this.pokerusChance = 3,
   });
+
+  static GameDataConstants _instance = const GameDataConstants._();
+  static GameDataConstants get instance => _instance;
+
+  static void setInstanceData({
+    int? ivStatLimit,
+    int? evLimit,
+    int? vStatLimit,
+    int? maxNameSize,
+    int? maxMoves,
+    int? maxMoney,
+    int? maxCoins,
+    int? maxBattlePoints,
+    int? maxSoot,
+    int? maxPlayerNameSize,
+    int? maxPartySize,
+    int? maxLevel,
+    int? eggLevel,
+    int? shinyChance,
+    bool? superShiny,
+    int? pokerusChance,
+  }) {
+    _instance = _instance._copyWith(
+      ivStatLimit: ivStatLimit,
+      evLimit: evLimit,
+      vStatLimit: vStatLimit,
+      maxNameSize: maxNameSize,
+      maxMoves: maxMoves,
+      maxMoney: maxMoney,
+      maxCoins: maxCoins,
+      maxBattlePoints: maxBattlePoints,
+      maxSoot: maxSoot,
+      maxPlayerNameSize: maxPlayerNameSize,
+      maxPartySize: maxPartySize,
+      maxLevel: maxLevel,
+      eggLevel: eggLevel,
+      shinyChance: shinyChance,
+      superShiny: superShiny,
+      pokerusChance: pokerusChance,
+    );
+  }
+
+  GameDataConstants _copyWith({
+    int? ivStatLimit,
+    int? evLimit,
+    int? vStatLimit,
+    int? maxNameSize,
+    int? maxMoves,
+    int? maxMoney,
+    int? maxCoins,
+    int? maxBattlePoints,
+    int? maxSoot,
+    int? maxPlayerNameSize,
+    int? maxPartySize,
+    int? maxLevel,
+    int? eggLevel,
+    int? shinyChance,
+    bool? superShiny,
+    int? pokerusChance,
+  }) {
+    return GameDataConstants._(
+      ivStatLimit: ivStatLimit ?? this.ivStatLimit,
+      evLimit: evLimit ?? this.evLimit,
+      vStatLimit: vStatLimit ?? this.vStatLimit,
+      maxNameSize: maxNameSize ?? this.maxNameSize,
+      maxMoves: maxMoves ?? this.maxMoves,
+      maxMoney: maxMoney ?? this.maxMoney,
+      maxCoins: maxCoins ?? this.maxCoins,
+      maxBattlePoints: maxBattlePoints ?? this.maxBattlePoints,
+      maxSoot: maxSoot ?? this.maxSoot,
+      maxPlayerNameSize: maxPlayerNameSize ?? this.maxPlayerNameSize,
+      maxPartySize: maxPartySize ?? this.maxPartySize,
+      maxLevel: maxLevel ?? this.maxLevel,
+      eggLevel: eggLevel ?? this.eggLevel,
+      shinyChance: shinyChance ?? this.shinyChance,
+      superShiny: superShiny ?? this.superShiny,
+      pokerusChance: pokerusChance ?? this.pokerusChance,
+    );
+  }
 }

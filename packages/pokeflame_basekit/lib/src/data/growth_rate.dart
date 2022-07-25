@@ -4,16 +4,10 @@ import 'package:pokeflame_basekit/pokeflame_basekit.dart';
 import 'package:pokeflame_core/pokeflame_core.dart';
 
 class GrowthRateKit extends DataKit<GameDataGrowthRate> {
-  final GameDataConstants _constants;
-
-  GrowthRateKit({required GameDataConstants constants})
-      : _constants = constants;
-
-  /// Default implementation for the growth rate.
-  late final base = GrowthRateKit(constants: _constants);
+  const GrowthRateKit._();
 
   /// Also known as "Medium Fast".
-  late final medium = GameDataGrowthRate(
+  static final medium = GameDataGrowthRate(
     id: 0,
     name: 'Medium',
     expValues: const [
@@ -120,10 +114,9 @@ class GrowthRateKit extends DataKit<GameDataGrowthRate> {
       1000000
     ],
     expFormula: (level) => math.pow(level, 3).toInt(),
-    constants: _constants,
   );
 
-  late final erratic = GameDataGrowthRate(
+  static final erratic = GameDataGrowthRate(
     id: 1,
     name: 'Erratic',
     expValues: const [
@@ -230,10 +223,9 @@ class GrowthRateKit extends DataKit<GameDataGrowthRate> {
       600000
     ],
     expFormula: (level) => math.pow(level, 4) * 3 ~/ 500,
-    constants: _constants,
   );
 
-  late final fluctuating = GameDataGrowthRate(
+  static final fluctuating = GameDataGrowthRate(
     id: 2,
     name: 'Fluctuating',
     expValues: const [
@@ -343,10 +335,9 @@ class GrowthRateKit extends DataKit<GameDataGrowthRate> {
       final rate = math.max(82 - ((level - 100) / 2.0), 40);
       return math.pow(level, 4) * rate ~/ 5000;
     },
-    constants: _constants,
   );
 
-  late final parabolic = GameDataGrowthRate(
+  static final parabolic = GameDataGrowthRate(
     id: 3,
     name: 'Parabolic',
     expValues: const [
@@ -457,10 +448,9 @@ class GrowthRateKit extends DataKit<GameDataGrowthRate> {
             (100 * level) -
             140)
         .floor(),
-    constants: _constants,
   );
 
-  late final fast = GameDataGrowthRate(
+  static final fast = GameDataGrowthRate(
     id: 3,
     name: 'Fast',
     expValues: const [
@@ -567,10 +557,9 @@ class GrowthRateKit extends DataKit<GameDataGrowthRate> {
       800000,
     ],
     expFormula: (level) => math.pow(level, 3) * 4 ~/ 5,
-    constants: _constants,
   );
 
-  late final slow = GameDataGrowthRate(
+  static final slow = GameDataGrowthRate(
     id: 4,
     name: 'Slow',
     expValues: const [
@@ -677,11 +666,9 @@ class GrowthRateKit extends DataKit<GameDataGrowthRate> {
       1250000,
     ],
     expFormula: (level) => math.pow(level, 3) * 5 ~/ 4,
-    constants: _constants,
   );
 
-  @override
-  List<GameDataGrowthRate> get props => [
+  static List<GameDataGrowthRate> get properties => [
         medium,
         erratic,
         fluctuating,

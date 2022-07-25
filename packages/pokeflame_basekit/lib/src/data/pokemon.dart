@@ -3,11 +3,9 @@ import 'package:pokeflame_basekit/src/data/growth_rate.dart';
 import 'package:pokeflame_core/pokeflame_core.dart';
 
 class PokemonKit extends DataKit<GameDataPokemon> {
-  final GameDataConstants _constants;
+  const PokemonKit._();
 
-  PokemonKit({required GameDataConstants constants}) : _constants = constants;
-
-  late final bulbasaur = GameDataPokemon(
+  static final bulbasaur = GameDataPokemon(
     id: 1,
     name: 'Bulbasaur',
     type1: TypesKit.bug,
@@ -21,7 +19,7 @@ class PokemonKit extends DataKit<GameDataPokemon> {
     },
     effortValues: const {PokeStatIndex.spAttack: 1},
     abilities: const [],
-    growthRate: GrowthRateKit(constants: _constants).parabolic,
+    growthRate: GrowthRateKit.parabolic,
     genderRatio: 'FemaleOneEighth',
     baseExp: 64,
     catchRate: 45,

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pokeflame_basekit/pokeflame_basekit.dart';
 import 'package:pokeflame_core/pokeflame_core.dart';
 
-const _constants = GameDataConstants();
 final _movesKit = MovesKit(items: const ItemsKit().propsById);
-final _pkmnKit = PokemonKit(constants: _constants);
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: MyHomePage(
         pkmn1: Pokemon(
-          speciesData: _pkmnKit.bulbasaur,
+          speciesData: PokemonKit.bulbasaur,
           moves: [
             PokemonMove(
               move: _movesKit.megahorn,
@@ -31,7 +29,7 @@ class MyApp extends StatelessWidget {
           nature: NaturesKit.hardy,
         ),
         pkmn2: Pokemon(
-          speciesData: _pkmnKit.bulbasaur,
+          speciesData: PokemonKit.bulbasaur,
           moves: [
             PokemonMove(
               move: _movesKit.megahorn,
