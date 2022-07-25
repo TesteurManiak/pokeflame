@@ -9,6 +9,10 @@ ide:
   intellij: false
 
 scripts:
+  packages-get:
+    run: melos exec -- "flutter packages get"
+    description: |
+      Run `flutter packages get` in all packages.
   analyze:
     run: melos exec -- "flutter analyze --no-fatal-infos"
     description: |
