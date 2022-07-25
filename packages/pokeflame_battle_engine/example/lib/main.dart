@@ -1,12 +1,12 @@
+import 'package:example/widgets/name_level.dart';
+import 'package:example/widgets/stats_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:pokeflame_basekit/pokeflame_basekit.dart';
 import 'package:pokeflame_core/pokeflame_core.dart';
 
 final _movesKit = MovesKit(items: const ItemsKit().propsById);
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -63,21 +63,37 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+    final type2 = widget.pkmn1.type2;
     return Scaffold(
       body: Center(
-        child: Text.rich(
-          TextSpan(
-            children: [
-              TextSpan(text: 'Name: ${widget.pkmn1.name}'),
-              TextSpan(text: '\nLevel: ${widget.pkmn1.level}'),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            NameLevel.fromPokemon(widget.pkmn1),
+            StatsLayout.statsFromPokemon(widget.pkmn1),
+            Text.rich(
               TextSpan(
-                text: '\nHP: ${widget.pkmn1.hp}/${widget.pkmn1.totalHp}',
+                children: [
+                  TextSpan(text: '\n', children: [
+                    WidgetSpan(
+                      child: Image.asset(
+                        'assets/types/${widget.pkmn1.type1.id}.png',
+                        height: 16,
+                      ),
+                    ),
+                    if (type2 != null)
+                      WidgetSpan(
+                        child: Image.asset(
+                          'assets/types/${type2.id}.png',
+                          height: 16,
+                        ),
+                      ),
+                  ]),
+                ],
               ),
-              TextSpan(text: '\nAtk: ${widget.pkmn1.attack}'),
-              TextSpan(text: '\nDef: ${widget.pkmn1.defense}'),
-              TextSpan(text: '\nSpd: ${widget.pkmn1.speed}'),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

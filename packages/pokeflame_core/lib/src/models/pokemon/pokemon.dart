@@ -279,6 +279,9 @@ class Pokemon {
     _status = null;
     statusCount = 0;
   }
+
+  GameDataType get type1 => _speciesData.type1;
+  GameDataType? get type2 => _speciesData.type2;
 }
 
 enum ObtainMethod { met, asEgg, traded, fatefulEncounter }

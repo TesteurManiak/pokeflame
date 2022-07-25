@@ -9,6 +9,7 @@ class PokemonKit extends DataKit<GameDataPokemon> {
     id: 1,
     name: 'Bulbasaur',
     type1: TypesKit.bug,
+    type2: TypesKit.poison,
     stats: const {
       PokeStatIndex.hp: 45,
       PokeStatIndex.attack: 49,
