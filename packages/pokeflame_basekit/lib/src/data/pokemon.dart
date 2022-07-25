@@ -8,7 +8,7 @@ class PokemonKit extends DataKit<GameDataPokemon> {
   static final bulbasaur = GameDataPokemon(
     id: 1,
     name: 'Bulbasaur',
-    type1: TypesKit.bug,
+    type1: TypesKit.grass,
     type2: TypesKit.poison,
     stats: const {
       PokeStatIndex.hp: 45,
