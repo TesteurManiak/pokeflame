@@ -117,14 +117,37 @@ class TypesKit extends DataKit<GameDataType> {
     },
   );
 
-  static const ghost = GameDataType(
-    id: 7,
+  static final ghost = GameDataType(
+    id: Type.ghost.index,
     name: 'Ghost',
+    onHitTbl: {
+      Type.ghost.index: TypeModifier.weakness,
+      Type.dark.index: TypeModifier.weakness,
+      Type.poison.index: TypeModifier.resistance,
+      Type.bug.index: TypeModifier.resistance,
+      Type.normal.index: TypeModifier.noEffect,
+    },
   );
 
-  static const steel = GameDataType(
-    id: 8,
+  static final steel = GameDataType(
+    id: Type.steel.index,
     name: 'Steel',
+    onHitTbl: {
+      Type.fighting.index: TypeModifier.weakness,
+      Type.ground.index: TypeModifier.weakness,
+      Type.fire.index: TypeModifier.weakness,
+      Type.normal.index: TypeModifier.resistance,
+      Type.flying.index: TypeModifier.resistance,
+      Type.rock.index: TypeModifier.resistance,
+      Type.bug.index: TypeModifier.resistance,
+      Type.steel.index: TypeModifier.resistance,
+      Type.grass.index: TypeModifier.resistance,
+      Type.psychic.index: TypeModifier.resistance,
+      Type.ice.index: TypeModifier.resistance,
+      Type.dragon.index: TypeModifier.resistance,
+      Type.fairy.index: TypeModifier.resistance,
+      Type.poison.index: TypeModifier.noEffect,
+    },
   );
 
   static final questionMark = GameDataType(
@@ -132,14 +155,33 @@ class TypesKit extends DataKit<GameDataType> {
     name: 'Question Mark',
   );
 
-  static const fire = GameDataType(
-    id: 10,
+  static final fire = GameDataType(
+    id: Type.fire.index,
     name: 'Fire',
+    onHitTbl: {
+      Type.ground.index: TypeModifier.weakness,
+      Type.rock.index: TypeModifier.weakness,
+      Type.water.index: TypeModifier.weakness,
+      Type.bug.index: TypeModifier.resistance,
+      Type.steel.index: TypeModifier.resistance,
+      Type.fire.index: TypeModifier.resistance,
+      Type.grass.index: TypeModifier.resistance,
+      Type.ice.index: TypeModifier.resistance,
+      Type.fairy.index: TypeModifier.resistance,
+    },
   );
 
-  static const water = GameDataType(
-    id: 11,
+  static final water = GameDataType(
+    id: Type.water.index,
     name: 'Water',
+    onHitTbl: {
+      Type.grass.index: TypeModifier.weakness,
+      Type.electric.index: TypeModifier.weakness,
+      Type.steel.index: TypeModifier.resistance,
+      Type.fire.index: TypeModifier.resistance,
+      Type.water.index: TypeModifier.resistance,
+      Type.ice.index: TypeModifier.resistance,
+    },
   );
 
   static const grass = GameDataType(
